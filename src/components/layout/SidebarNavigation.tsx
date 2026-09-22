@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -9,7 +10,6 @@ import {
   FileText,
   Zap,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -23,13 +23,13 @@ export function SidebarNavigation() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-56 border-r border-white/[0.08] bg-black h-screen flex flex-col shrink-0">
+    <aside className="w-56 border-r border-white/8 bg-black h-screen flex flex-col shrink-0">
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-6">
-        <div className="w-6 h-6 rounded bg-white text-black flex items-center justify-center font-bold text-xs leading-none select-none">
-          D
+        <div className="relative w-8 h-8 flex items-center justify-center shrink-0">
+          <Image src="/logo.png" alt="Logo" fill className="object-contain" priority />
         </div>
-        <span className="text-[14px] font-medium tracking-tight text-white">
+        <span className="text-sm font-semibold tracking-tight text-white font-sans">
           Deadline Defenders
         </span>
       </div>
@@ -49,24 +49,14 @@ export function SidebarNavigation() {
                   : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-300 border border-transparent",
               ].join(" ")}
             >
-              <Icon className="w-[15px] h-[15px] shrink-0 stroke-[1.5]" />
+              <Icon className="w-3.75 h-3.75 shrink-0 stroke-[1.5]" />
               {label}
             </Link>
           );
         })}
       </nav>
 
-      {/* Divider + Quick Intake */}
-      <div className="px-3 pb-6">
-        <div className="border-t border-zinc-800 pt-4">
-          <Link href="/intake" className="block w-full">
-            <button className="w-full flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 font-medium text-sm py-2 px-4 rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 active:outline-none select-none">
-              <Zap className="w-4 h-4" />
-              Quick Intake
-            </button>
-          </Link>
-        </div>
-      </div>
+
     </aside>
   );
 }

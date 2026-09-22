@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback, KeyboardEvent } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   X,
   FileText,
@@ -60,16 +60,19 @@ export function DocumentDrawer({
 
   // Sync initialCase when drawer opens
   useEffect(() => {
-    if (isOpen && initialCase) {
-      setCaseNumber(initialCase.caseNumber ?? "");
-      setTenantName(initialCase.tenantName ?? "");
-      setLandlordName(initialCase.landlordName ?? "");
-      setNoticeType(initialCase.noticeType ?? "3-Day Pay or Vacate");
-      setArrearsAmount(initialCase.arrearsAmount ?? "");
-    }
-    if (isOpen && initialTemplate) {
-      setDocumentType(initialTemplate);
-    }
+    const timer = setTimeout(() => {
+      if (isOpen && initialCase) {
+        setCaseNumber(initialCase.caseNumber ?? "");
+        setTenantName(initialCase.tenantName ?? "");
+        setLandlordName(initialCase.landlordName ?? "");
+        setNoticeType(initialCase.noticeType ?? "3-Day Pay or Vacate");
+        setArrearsAmount(initialCase.arrearsAmount ?? "");
+      }
+      if (isOpen && initialTemplate) {
+        setDocumentType(initialTemplate);
+      }
+    }, 0);
+    return () => clearTimeout(timer);
   }, [isOpen, initialCase, initialTemplate]);
 
   // Escape key
