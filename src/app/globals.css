@@ -1,26 +1,167 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-gold: #B79A61;
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
+    --muted: #888888;
+    --border: #333333;
+    --surface: #111111;
+
+    --radius-sm: 6px;
+    --radius-md: 8px;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+
+    --shadow-card: 0 0 0 1px #333;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #000;
+    color: var(--foreground);
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+  }
+
+  /* Thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: var(--radius-sm);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* ── Button ────────────────────────────── */
+  .button {
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .button:focus-visible {
+    outline: 2px solid #0070f3;
+    outline-offset: 2px;
+  }
+  .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  .button--primary {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+  .button--primary:not(:disabled):hover {
+    background-color: #fff;
+  }
+  .button--secondary {
+    background-color: var(--surface);
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+  .button--secondary:not(:disabled):hover {
+    background-color: #222;
+  }
+  .button--ghost {
+    background-color: transparent;
+    color: var(--muted);
+  }
+  .button--ghost:not(:disabled):hover {
+    background-color: var(--surface);
+    color: var(--foreground);
+    border-color: var(--border);
+  }
+  .button--destructive {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .button--destructive:not(:disabled):hover {
+    background-color: rgba(239, 68, 68, 0.2);
+  }
+
+  /* ── Badge ─────────────────────────────── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+  .badge--success {
+    color: #34d399; /* emerald-400 */
+    background-color: rgba(5, 46, 22, 0.4);
+    border-color: rgba(16, 185, 129, 0.2);
+  }
+  .badge--warning {
+    color: #fbbf24; /* amber-400 */
+    background-color: rgba(69, 26, 3, 0.4);
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .badge--neutral {
+    color: var(--muted);
+    background-color: var(--surface);
+    border-color: var(--border);
+  }
+  .badge--danger {
+    color: #ef4444; /* red-500 */
+    background-color: rgba(127, 29, 29, 0.4);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
 }
