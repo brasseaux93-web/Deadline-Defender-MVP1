@@ -1,18 +1,5 @@
-import { FolderOpen } from "lucide-react";
+import { redirect } from "next/navigation";
 
-export default function CasesPage() {
-  return (
-    <div className="space-y-5">
-      <header>
-        <h1 className="text-xl font-semibold tracking-[-0.03em] text-zinc-100">Cases</h1>
-        <p className="text-xs text-zinc-400 font-normal mt-0.5">All active and closed cases</p>
-      </header>
-      <div className="panel p-12 flex flex-col items-center justify-center text-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-zinc-900 border border-[#27272a] flex items-center justify-center">
-          <FolderOpen className="w-4 h-4 text-zinc-600" />
-        </div>
-        <p className="text-xs text-zinc-600">Full case management coming soon.</p>
-      </div>
-    </div>
-  );
+export default function CasesRedirect() {
+  redirect("/clients");
 }

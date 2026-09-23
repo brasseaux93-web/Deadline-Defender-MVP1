@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Deadline Defender — Continuance Vault
 
-## Getting Started
+A case-manager operating system for eviction defense, housing stability, medical casework, and benefits recertification in Washington.
 
-First, run the development server:
+## What this build is
+
+- Dual-rail shell: **Command** (work) and **Washington desk** (authority + filing)
+- People-first caseload across four practice lanes
+- Date constellation with notification channels (court / client / counsel / agency)
+- Safety vault of sealed folios
+- Washington instruments that fill captions, parties, RCW citations, and **highlight every name in copper**
+- Submit path to King County eFile and Sheriff Civil (writ stays)
+
+## Hierarchy of work
+
+1. Keep the person housed today
+2. Hit the written deadline
+3. Seal a complete vault folio
+4. Hand the court a ready order
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind 4 · Framer Motion · Groq (optional polish)
+
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Generated pleadings are **advocate drafts for licensed review**. They are not a substitute for a lawyer and should be checked against the current RCW, local rules, and the client's file before filing.

@@ -5,23 +5,17 @@ import "./globals.css";
 import { AppFrame } from "@/components/layout/AppFrame";
 
 export const metadata: Metadata = {
-  title: "Deadline Defender — King County Eviction Defense",
+  title: "Deadline Defender — Continuance Vault",
   description:
-    "Legal aid case management and document generation for eviction defense advocates in King County, WA.",
+    "Case management, date defense, and Washington legal instruments for housing, medical, and eviction case managers.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} bg-black`}
-      suppressHydrationWarning
-    >
-      <body className={`${GeistSans.className} ${GeistMono.variable} antialiased min-h-screen bg-black text-foreground`}>
+    <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
+      <body className={`${GeistSans.className} ${GeistMono.variable} antialiased`}>
         <AppFrame>{children}</AppFrame>
       </body>
     </html>

@@ -1,14 +1,17 @@
 import { ReactNode } from "react";
-import { SidebarNavigation } from "./SidebarNavigation";
+import { CommandRail } from "./CommandRail";
+import { ResourceRail } from "./ResourceRail";
+import { CommandPalette } from "./CommandPalette";
 
 export function AppFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen bg-black text-zinc-100 overflow-hidden">
-      <SidebarNavigation />
-      {/* Main content — flat continuous canvas */}
-      <main className="flex-1 overflow-y-auto flex flex-col bg-black relative">
+    <div className="shell">
+      <CommandRail />
+      <main className="min-w-0 h-screen overflow-y-auto">
         {children}
       </main>
+      <ResourceRail />
+      <CommandPalette />
     </div>
   );
 }
