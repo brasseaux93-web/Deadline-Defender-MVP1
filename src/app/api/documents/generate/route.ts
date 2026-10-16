@@ -4,8 +4,6 @@ import { CLIENTS } from "@/lib/caseload";
 import { fillInstrument, INSTRUMENT_CATALOG } from "@/lib/wa-instruments";
 import type { InstrumentKind } from "@/lib/types";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const kind = (body.documentType ?? body.kind) as InstrumentKind;
@@ -42,6 +40,7 @@ export async function POST(request: NextRequest) {
     return new Response(stream, { headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache" } });
   }
 
+  const groq = new Groq({ apiKey });
   const completion = await groq.chat.completions.create({
     model: "llama-3.3-70b-versatile",
     temperature: 0.1,
